@@ -4,52 +4,31 @@
 To write a C Program to implement Dijkstra's Algorithm to find the shortest path
 
 ## Algorithm
-1.Initialize constants and global variables:
+1.Initialize distances:
 
-Define INFINITY as 9999 and MAX as 10.
+Set the distance to the start node as 0 and to all other nodes as infinity. Mark all nodes as unvisited.
 
-2.Define the function dijkstra(int G[MAX][MAX], int n, int startnode) to compute the shortest paths from the starting node.
+2.Pick the unvisited node with the smallest distance:
 
+Start with the node with the smallest known distance (initially, the start node).
 
-3.In the main function:
+3.Update distances to neighbors:
 
-Declare a 2D array G[MAX][MAX], and integers i, j, n, and u.
-Read the number of nodes n using scanf.
-For each node i from 0 to n-1:
-For each node j from 0 to n-1:
-Read the edge weights into the adjacency matrix G[i][j] using scanf.
-Read the starting node u using scanf.
-Call the dijkstra(G, n, u) function to compute the shortest paths.
-Return 0 to indicate successful completion.
+For each unvisited neighbor, calculate the tentative distance through the current node.
+If it’s smaller than the known distance, update it.
 
+4.Mark the current node as visited:
 
-4.In the dijkstra(int G[MAX][MAX], int n, int startnode) function:
+Once all neighbors are checked, mark the current node as visited.
+A visited node will not be checked again.
 
-Declare local variables cost[MAX][MAX], distance[MAX], pred[MAX], visited[MAX], count, mindistance, nextnode, i, and j.
-Create the cost matrix:
-For each node i from 0 to n-1:
-For each node j from 0 to n-1:
-If G[i][j] is 0, set cost[i][j] to INFINITY; otherwise, set cost[i][j] to G[i][j].
-Initialize the pred[], distance[], and visited[] arrays:
-For each node i from 0 to n-1:
-Set distance[i] to cost[startnode][i] and pred[i] to startnode, and set visited[i] to 0.
-Set distance[startnode] to 0 and visited[startnode] to 1.
-Initialize count to 1.
-While count is less than n-1:
-Set mindistance to INFINITY.
-For each node i from 0 to n-1:
-If distance[i] is less than mindistance and visited[i] is 0, update mindistance and nextnode with the current node.
-Mark nextnode as visited.
-For each node i from 0 to n-1:
-If visited[i] is 0 and if a better path exists through nextnode, update distance[i] and pred[i].
-Increment count by 1.
+5.Repeat steps 2–4:
 
-5.Print the shortest path and distance for each node:
+Continue picking the unvisited node with the smallest distance and updating its neighbors.
 
-For each node i from 0 to n-1:
-If i is not equal to startnode, print the distance from the starting node to i.
-Print the path from i back to startnode using the pred[] array.
-Use a loop to trace back the path from i to startnode and print each node in the path.
+6.Stop when all nodes are visited or the shortest path is found:
+
+If you’re only looking for the shortest path to one target node, you can stop once that node is visited.
  
 
 ## Program:
