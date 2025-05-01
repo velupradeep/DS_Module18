@@ -4,51 +4,24 @@
 To write a C program to implement Prim's Algorithm for finding Total Cost of tree.
 
 ## Algorithm
-1.Initialize constants and global variables:
+1.Start with any vertex:
+Select an arbitrary vertex as the starting point. Add it to the MST set.
 
-Define infinity as 9999 and MAX as 20.
-Declare matrices G[MAX][MAX], spanning[MAX][MAX], and an integer n.
-2.Define the function prims() to compute the minimum spanning tree.
+2.Mark visited and unvisited vertices:
+Mark the starting vertex as visited. All others are unvisited.
 
-3.In the main function:
+3.Look at all edges from visited to unvisited vertices:
+Examine all the edges connecting the visited vertices to the unvisited ones.
 
-Declare variables i, j, and total_cost as integers.
-Read the number of vertices n using scanf.
-For each vertex i from 0 to n-1:
-For each vertex j from 0 to n-1:
-Read the edge weights into the adjacency matrix G[i][j] using scanf.
-Call the prims() function and store the result in total_cost.
-For each vertex i from 0 to n-1:
-For each vertex j from 0 to n-1:
-Print the spanning tree matrix spanning[i][j].
-Print a newline.
-Print the total cost of the spanning tree.
-Return 0 to indicate successful completion.
-4.In the prims() function:
+4.Pick the smallest edge:
+From the edges found in step 3, pick the edge with the minimum weight that connects a visited vertex to an unvisited vertex.
 
-Declare local variables cost[MAX][MAX], u, v, min_distance, distance[MAX], from[MAX], visited[MAX], no_of_edges, i, min_cost, and j.
-Create the cost[][] matrix and initialize the spanning[][] matrix:
-For each vertex i from 0 to n-1:
-For each vertex j from 0 to n-1:
-If G[i][j] is 0, set cost[i][j] to infinity; otherwise, set cost[i][j] to G[i][j] and initialize spanning[i][j] to 0.
-Initialize the visited[], distance[], and from[] arrays:
-Set distance[0] to 0 and visited[0] to 1.
-For each vertex i from 1 to n-1:
-Set distance[i] to cost[0][i] and from[i] to 0, and set visited[i] to 0.
-Initialize min_cost to 0 and no_of_edges to n-1.
-While no_of_edges is greater than 0:
-Find the vertex v with the minimum distance from the tree:
-Set min_distance to infinity.
-For each vertex i from 1 to n-1:
-If visited[i] is 0 and distance[i] is less than min_distance, update v and min_distance.
-Set u to from[v].
-Insert the edge in the spanning tree by updating spanning[u][v] and spanning[v][u] with distance[v].
-Decrement no_of_edges and set visited[v] to 1.
-Update the distance[] array:
-For each vertex i from 1 to n-1:
-If visited[i] is 0 and cost[i][v] is less than distance[i], update distance[i] and from[i].
-Add cost[u][v] to min_cost.
-Return min_cost as the total cost of the minimum spanning tree.
+5.Add the selected edge and vertex to the MST:
+Add the chosen edge and the unvisited vertex it connects to the MST. Mark this vertex as visited.
+
+6.Repeat steps 3–5 until all vertices are visited:
+Continue adding the smallest edge from visited to unvisited vertices until all vertices are included in the MST.
+
 
 
 ## Program:
