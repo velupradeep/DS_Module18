@@ -5,21 +5,27 @@ To write a C program to implement Prim's Algorithm for finding Total Cost of tre
 
 ## Algorithm
 1.Start with any vertex:
+
 Select an arbitrary vertex as the starting point. Add it to the MST set.
 
 2.Mark visited and unvisited vertices:
+
 Mark the starting vertex as visited. All others are unvisited.
 
 3.Look at all edges from visited to unvisited vertices:
+
 Examine all the edges connecting the visited vertices to the unvisited ones.
 
 4.Pick the smallest edge:
+
 From the edges found in step 3, pick the edge with the minimum weight that connects a visited vertex to an unvisited vertex.
 
 5.Add the selected edge and vertex to the MST:
+
 Add the chosen edge and the unvisited vertex it connects to the MST. Mark this vertex as visited.
 
 6.Repeat steps 3–5 until all vertices are visited:
+
 Continue adding the smallest edge from visited to unvisited vertices until all vertices are included in the MST.
 
 
