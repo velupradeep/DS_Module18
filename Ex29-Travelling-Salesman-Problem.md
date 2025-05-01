@@ -3,48 +3,29 @@
 ## AIM:
 To write a C Program to implement Travelling Salesman Problem for finding shortest path.
 ## Algorithm
-1.Initialize global variables:
+1.List all cities and distances between each pair:
 
-Declare a 2D array a[10][10] to store the cost matrix, an array visited[10] to track visited cities, an integer n for the number of cities, and an integer cost initialized to 0.
+Represent the problem as a graph with cities as nodes and distances as edge weights.
 
-2.Define the function get() to read the input data:
+2.Generate all possible permutations of cities:
 
-Declare local variables i and j as integers.
-Read the number of cities n using scanf.
-For each city i from 0 to n-1:
-For each city j from 0 to n-1:
-Read the cost of traveling from city i to city j into a[i][j] using scanf.
-Initialize visited[i] to 0 (indicating that the city has not been visited).
+Create all possible orders in which the cities can be visited (except the starting city is fixed to reduce duplicates).
 
-3.Define the function mincost(int city) to find the minimum cost path:
+3.Calculate total distance for each permutation:
 
-Declare a local variable ncity to store the next city.
-Call the least(int) function to find the next city with the least cost.
-Mark the current city as visited by setting visited[city] to 1 and print the current city (adjusted for 1-based indexing).
-If ncity is 999 (indicating no unvisited cities), set ncity to 0 (returning to the starting city) and print it.
-Add the cost of traveling from the current city to ncity to the total cost.
-Recursively call mincost(ncity) to continue the path.
+For each route, calculate the total travel distance (including the return to the starting city).
 
-4.Define the function least(int c) to find the city with the least cost from the current city:
+4.Track the minimum distance found so far:
 
-Declare local variables i, nc, min, and kmin.
-Initialize nc to 999 and min to 999.
-For each city i from 0 to n-1:
-If there is a path from city c to city i (i.e., a[c][i] != 0) and city i has not been visited:
-If the cost a[c][i] is less than min, update min, kmin, and nc with the current values.
-If min is not 999, add kmin to the total cost.
-Return nc, the next city to visit.
+Compare distances of each route to keep track of the shortest one.
 
-5.Define the function put() to print the total minimum cost:
+5.Repeat until all permutations are checked:
 
-Print the total cost using printf.
-6.In the main function:
+Continue checking all combinations to ensure the optimal solution is found.
 
-Call the get() function to read the input data.
-Call the mincost(0) function to start the path from the first city (index 0).
-Call the put() function to display the minimum cost.
-Return 0 to indicate successful completion.
+6.Return the route with the minimum total distance:
 
+This is the shortest possible tour that visits every city once and returns to the start.
 
 
 ## Program:
